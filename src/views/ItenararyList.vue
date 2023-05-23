@@ -34,7 +34,7 @@ onMounted(async () => {
                         <h5 class="card-title">Itenary 1</h5>
                         <p class="card-text">Goa (/ˈɡoʊə/ (listen)) is a state on the southwestern coast of India. It is situated within the Konkan region, geographically separated from the Deccan highlands by the Western Ghats.[5][6] It is bound by the Indian states of Maharashtra to the north, and Karnataka to the east and south, wit</p>
                         <div style="display:flex;">
-                            <a href="/itenarary" style="margin-left: auto;">View More</a>
+                            <a href="./itenarary" style="margin-left: auto;">View More</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ onMounted(async () => {
                         <h5 class="card-title">Itenary 1</h5>
                         <p class="card-text">Goa (/ˈɡoʊə/ (listen)) is a state on the southwestern coast of India. It is situated within the Konkan region, geographically separated from the Deccan highlands by the Western Ghats.[5][6] It is bound by the Indian states of Maharashtra to the north, and Karnataka to the east and south, wit</p>
                         <div style="display:flex;">
-                            <a href="/itenarary" style="margin-left: auto;">View More</a>
+                            <a href="./itenarary" style="margin-left: auto;">View More</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ onMounted(async () => {
                         <h5 class="card-title">Itenary 1</h5>
                         <p class="card-text">Goa (/ˈɡoʊə/ (listen)) is a state on the southwestern coast of India. It is situated within the Konkan region, geographically separated from the Deccan highlands by the Western Ghats.[5][6] It is bound by the Indian states of Maharashtra to the north, and Karnataka to the east and south, wit</p>
                         <div style="display:flex;">
-                            <a  href="/itenarary" style="margin-left: auto;">View More</a>
+                            <a  href="./itenarary" style="margin-left: auto;">View More</a>
                         </div>
                     </div>
                 </div>
