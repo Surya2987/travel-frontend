@@ -31,7 +31,7 @@ onMounted(async () => {
                 <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
                     <div class="card">
                     <div class="card-image-div">
-                        <img class="card-img" src="explore1.png" alt="">
+                        <img class="card-img" src="/explore1.png" alt="">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Hotel companies tipped the scales</a></h4>
@@ -43,7 +43,7 @@ onMounted(async () => {
                 <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
                     <div class="card">
                     <div class="card-image-div">
-                        <img class="card-img" src="explore2.png" alt="">
+                        <img class="card-img" src="/explore2.png" alt="">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Try your hand inaugural industry</a></h4>
@@ -55,7 +55,7 @@ onMounted(async () => {
                 <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
                     <div class="card">
                     <div class="card-image-div">
-                        <img class="card-img" src="explore3.png" alt="">
+                        <img class="card-img" src="/explore3.png" alt="">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Hoteliers resolve to invest in guests</a></h4>
@@ -70,7 +70,7 @@ onMounted(async () => {
           <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
             <div class="card">
               <div class="card-image-div">
-                <img class="card-img" src="explore1.png" alt="">
+                <img class="card-img" src="/explore1.png" alt="">
               </div>
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Hotel companies tipped the scales</a></h4>
@@ -82,7 +82,7 @@ onMounted(async () => {
           <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
             <div class="card">
               <div class="card-image-div">
-                <img class="card-img" src="explore2.png" alt="">
+                <img class="card-img" src="/explore2.png" alt="">
               </div>
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Try your hand inaugural industry</a></h4>
@@ -94,7 +94,7 @@ onMounted(async () => {
           <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
             <div class="card">
               <div class="card-image-div">
-                <img class="card-img" src="explore3.png" alt="">
+                <img class="card-img" src="/explore3.png" alt="">
               </div>
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Hoteliers resolve to invest in guests</a></h4>
