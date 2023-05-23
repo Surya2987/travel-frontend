@@ -7,7 +7,7 @@ import UserServices from "../services/UserServices";
 const router = useRouter();
 
 const user = ref(null);
-const title = ref("Recipes");
+const title = ref("Travel Itenarary");
 const logoURL = ref("");
 
 onMounted(() => {
@@ -31,8 +31,8 @@ function logout() {
 
 <template>
   <div>
-    <v-app-bar color="primary" app dark>
-      <router-link :to="{ name: 'recipes' }">
+    <v-app-bar color='#555' app dark>
+      <router-link :to="{ name: 'home' }">
         <v-img
           class="mx-2"
           :src="logoURL"
@@ -41,16 +41,18 @@ function logout() {
           contain
         ></v-img>
       </router-link>
-      <v-toolbar-title class="title">
-        {{ title }}
+      <v-toolbar-title class="title" :style="{color:'white',cursor:'pointer'}" >
+        <a href="/">{{ title }}</a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="mx-2" :to="{ name: 'recipes' }"> Recipes </v-btn>
+      <a class="btn" href="/itenararies">
+        Itenarary
+      </a>
+      <!-- <a class="btn" href="/places">
+        Places
+      </a> -->
       <v-btn v-if="user === null" class="mx-2" :to="{ name: 'login' }">
         Login
-      </v-btn>
-      <v-btn v-if="user !== null" class="mx-2" :to="{ name: 'ingredients' }">
-        Ingredients
       </v-btn>
       <v-menu v-if="user !== null" min-width="200px" rounded>
         <template v-slot:activator="{ props }">
@@ -83,3 +85,12 @@ function logout() {
     </v-app-bar>
   </div>
 </template>
+
+<style scoped>
+ a {
+  color: white;
+ }
+ a:hover {
+  color: white;
+ }
+</style>

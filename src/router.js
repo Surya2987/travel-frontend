@@ -5,8 +5,33 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      name: "home",
+      component: () => import("./views/Home.vue"),
+    },
+    {
+      path: "/login",
       name: "login",
       component: () => import("./views/Login.vue"),
+    },
+    {
+      path: "/places",
+      name: "places",
+      component: () => import("./views/PlaceList.vue"),
+    },
+    {
+      path: "/itenararies",
+      name: "itenararyList",
+      component: () => import("./views/ItenararyList.vue"),
+    },
+    {
+      path: "/itenarary",
+      name: "itenarary",
+      component: () => import("./views/Itenarary.vue"),
+    },
+    {
+      path: "/place",
+      name: "place",
+      component: () => import("./views/Place.vue"),
     },
     {
       path: "/recipes",
@@ -24,6 +49,7 @@ const router = createRouter({
       name: "ingredients",
       component: () => import("./views/IngredientList.vue"),
     },
+    
   ],
 });
 
