@@ -67,7 +67,7 @@ onMounted(async () => {
                 <h3 class="card-price">$150.00 <sub>/ Per Night</sub></h3>
                 <h4 class="card-title">Classic Bed Room</h4>
                 <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ onMounted(async () => {
                 <h3 class="card-price">$170.00 <sub>/ Per Night</sub></h3>
                 <h4 class="card-title">Premium Room</h4>
                 <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ onMounted(async () => {
                 <h3 class="card-price">$190.00 <sub>/ Per Night</sub></h3>
                 <h4 class="card-title">Family Room</h4>
                 <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-tile">Hotel companies tipped the scales</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-tile">Try your hand inaugural industry</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-tile">Hoteliers resolve to invest in guests</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title">Hotel companies tipped the scales</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -177,7 +177,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title">Try your hand inaugural industry</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title">Hoteliers resolve to invest in guests</h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -198,7 +198,7 @@ onMounted(async () => {
     </section><br/><br/>
     <div class="row justify-content-center">
         <div class="col-md-2">
-         <a href="/places"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a href="./places"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 </template>
@@ -207,7 +207,7 @@ onMounted(async () => {
 .header {
   position: relative;
   background-color: #343a40;
-  background: url("background.jpg") no-repeat center center;
+  background: url("/background.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
