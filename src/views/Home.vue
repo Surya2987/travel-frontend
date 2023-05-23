@@ -153,9 +153,6 @@ onMounted(async () => {
     <section class="section-margin">
       <div class="container">
         <div class="section-intro text-center pb-80px">
-          <div class="section-intro__style">
-            <img src="img/home/bed-icon.png" alt="">
-          </div>
           <h2>Nature</h2>
         </div>
 
