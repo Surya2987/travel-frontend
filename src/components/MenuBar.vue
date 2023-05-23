@@ -45,10 +45,10 @@ function logout() {
         <a href="/">{{ title }}</a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <a class="btn" href="/itenararies">
+      <a class="btn" href="./itenararies">
         Itenarary
       </a>
-      <!-- <a class="btn" href="/places">
+      <!-- <a class="btn" href="./places">
         Places
       </a> -->
       <v-btn v-if="user === null" class="mx-2" :to="{ name: 'login' }">

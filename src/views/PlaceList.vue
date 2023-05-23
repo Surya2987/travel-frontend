@@ -36,7 +36,7 @@ onMounted(async () => {
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Hotel companies tipped the scales</a></h4>
                         <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                        <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                        <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ onMounted(async () => {
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Try your hand inaugural industry</a></h4>
                         <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                        <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                        <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@ onMounted(async () => {
                     <div class="card-body">
                         <h4 class="card-title"><a href="#">Hoteliers resolve to invest in guests</a></h4>
                         <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                        <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                        <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Hotel companies tipped the scales</a></h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Try your hand inaugural industry</a></h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -99,7 +99,7 @@ onMounted(async () => {
               <div class="card-body">
                 <h4 class="card-title"><a href="#">Hoteliers resolve to invest in guests</a></h4>
                 <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="/place">Show More <i class="ti-arrow-right"></i></a>
+                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
               </div>
             </div>
           </div>
