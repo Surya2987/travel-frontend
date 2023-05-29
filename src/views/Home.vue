@@ -131,7 +131,7 @@ const gethotelUrl = (id)=>{
 
     <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="/hotels"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a href="./hotels"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 
@@ -161,7 +161,7 @@ const gethotelUrl = (id)=>{
 
      <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="/events"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a href="./events"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 
@@ -189,7 +189,7 @@ const gethotelUrl = (id)=>{
     </section><br/><br/>
     <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="/sightseeing"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a href="./sightseeing"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 </template>
@@ -198,7 +198,7 @@ const gethotelUrl = (id)=>{
 .header {
   position: relative;
   background-color: #343a40;
-  background: url("background.jpg") no-repeat center center;
+  background: url("/background.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
