@@ -14,42 +14,30 @@ const router = createRouter({
       component: () => import("./views/Login.vue"),
     },
     {
-      path: "/places",
-      name: "places",
-      component: () => import("./views/PlaceList.vue"),
+      path: "/trips",
+      name: "trips",
+      component: () => import("./views/TripList.vue"),
     },
     {
-      path: "/itenararies",
-      name: "itenararyList",
-      component: () => import("./views/ItenararyList.vue"),
+      path: "/sightseeing",
+      name: "sightseeing",
+      component: () => import("./views/SightList.vue"),
     },
     {
-      path: "/itenarary",
-      name: "itenarary",
-      component: () => import("./views/Itenarary.vue"),
+      path: "/events",
+      name: "events",
+      component: () => import("./views/EventList.vue"),
     },
     {
-      path: "/place",
-      name: "place",
-      component: () => import("./views/Place.vue"),
+      path: "/hotels",
+      name: "hotels",
+      component: () => import("./views/HotelList.vue"),
     },
     {
-      path: "/recipes",
-      name: "recipes",
-      component: () => import("./views/RecipeList.vue"),
+      path: "/trip",
+      name: "trip",
+      component: () => import("./views/Trip.vue"),
     },
-    {
-      path: "/recipe/:id",
-      name: "editRecipe",
-      props: true,
-      component: () => import("./views/EditRecipe.vue"),
-    },
-    {
-      path: "/ingredients",
-      name: "ingredients",
-      component: () => import("./views/IngredientList.vue"),
-    },
-    
   ],
 });
 
