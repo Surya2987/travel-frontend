@@ -1,11 +1,65 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-// import UserServices from "../services/UserServices.js";
+import HotelServices from "../services/HotelServices.js";
+import EventServices from "../services/EventServices.js";
+import SightSeeingServices from "../services/SightSeeingServices.js";
+
+import { ref } from "vue";
+import Loading from "../components/Loading.vue";
+import { getImageUrl } from "../common/";
+
+
+const hotels = ref([]);
+const loader = ref(true);
 
 onMounted(async () => {
-  
+  await getHotels();
+  await getSights();
+  await getEvents();
+  loader.value = false;
 });
+
+async function getHotels() {
+  await HotelServices.getHotels()
+    .then((response) => {
+      hotels.value = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+async function getSights() {
+  await SightSeeingServices.getSights()
+    .then((response) => {
+      sights.value = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+async function getEvents() {
+  await EventServices.getEvents()
+    .then((response) => {
+      events.value = response.data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+const getEventUrl = (id)=>{
+    return "/event/"+id
+}
+
+const getsightUrl = (id)=>{
+    return "/sight/"+id
+}
+
+const gethotelUrl = (id)=>{
+    return "/hotel/"+id
+}
 </script>
 <template>
         <header class="header">
@@ -54,54 +108,33 @@ onMounted(async () => {
        <section class="section-margin">
       <div class="container">
         <div class="section-intro text-center pb-80px">
-          <h2>Explore Our Rooms</h2>
+          <h2>Explore Our Hotels</h2>
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card">
-              <div class="card-image">
-                <img class="card-img" src="/explore1.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-price">$150.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-title">Classic Bed Room</h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="hotel in hotels" :key="hotel.id">
+            <div class="card ">
+            <div class="div-card-image">
+                <img class="card-img" :src="getImageUrl(hotel.imageUrl)" alt="">
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card">
-              <div class="card-image">
-                <img class="card-img" src="/explore2.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-price">$170.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-title">Premium Room</h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
+            <div class="card-body">
+                  <h3 class="card-price">{{ hotel.costPerRoom }} <sub>/ Per Night</sub></h3>
+                <h4 class="card-tile">{{ hotel.name }}</h4>
+                <p> {{ hotel.description }}</p>
+                <a class="card-link" :href="gethotelUrl(hotel.id)">Show More <i class="ti-arrow-right"></i></a>
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-            <div class="card">
-              <div class="card-image">
-                <img class="card-img" src="/explore3.png" alt="">
-              </div>
-              <div class="card-body">
-                <h3 class="card-price">$190.00 <sub>/ Per Night</sub></h3>
-                <h4 class="card-title">Family Room</h4>
-                <p>Beginning fourth dominion creeping god was. Beginning, which fly yieldi dry beast moved blessed </p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
             </div>
-          </div>
+        </div>
         </div>
       </div>
     </section><br/>
+
+    <div class="row justify-content-center">
+        <div class="col-md-2 show-more">
+         <a href="/hotels"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+        </div>
+    </div><br/><br/>
+
 
     <section class="section-margin">
       <div class="container">
@@ -110,45 +143,27 @@ onMounted(async () => {
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore1.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-tile">Hotel companies tipped the scales</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore2.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-tile">Try your hand inaugural industry</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore3.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-tile">Hoteliers resolve to invest in guests</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+           <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="event in events" :key="event.id">
+                    <div class="card ">
+                    <div class="div-card-image">
+                        <img class="card-img" :src="getImageUrl(event.imageUrl)" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-tile">{{ event.name }}</h4>
+                        <p> {{ event.description }}</p>
+                        <a class="card-link" :href="getEventUrl(event.id)">Show More <i class="ti-arrow-right"></i></a>
+                    </div>
+                    </div>
+                </div>
         </div>
       </div>
     </section><br/>
+
+     <div class="row justify-content-center">
+        <div class="col-md-2 show-more">
+         <a href="/events"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+        </div>
+    </div><br/><br/>
 
     <section class="section-margin">
       <div class="container">
@@ -157,48 +172,24 @@ onMounted(async () => {
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore1.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Hotel companies tipped the scales</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore2.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Try your hand inaugural industry</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <div class="card ">
-              <div class="div-card-image">
-                <img class="card-img" src="/explore3.png" alt="">
-              </div>
-              <div class="card-body">
-                <h4 class="card-title">Hoteliers resolve to invest in guests</h4>
-                <p>Not thoughts all exercise blessing Indulgence way everything joy alteration boisterous the attachment party we years to order</p>
-                <a class="card-link" href="./place">Show More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
-          </div>
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="sight in sights" :key="sight.id">
+                    <div class="card ">
+                    <div class="div-card-image">
+                        <img class="card-img" :src="getImageUrl(sight.imageUrl)" alt="">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-tile">{{ sight.name }}</h4>
+                        <p> {{ sight.description }}</p>
+                        <a class="card-link" :href="getsightUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
+                    </div>
+                    </div>
+                </div>
         </div>
       </div>
     </section><br/><br/>
     <div class="row justify-content-center">
-        <div class="col-md-2">
-         <a href="./places"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+        <div class="col-md-2 show-more">
+         <a href="/sightseeing"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 </template>
@@ -207,7 +198,7 @@ onMounted(async () => {
 .header {
   position: relative;
   background-color: #343a40;
-  background: url("/background.jpg") no-repeat center center;
+  background: url("background.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -230,5 +221,9 @@ a {
 }
 .show-more-button {
   width:300px;height:50px;color:white;background-color:#555;
+}
+
+.show-more {
+  margin-right:60px;
 }
 </style>
