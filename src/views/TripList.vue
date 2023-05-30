@@ -4,6 +4,7 @@ import { useRouter } from "vue-router";
 import Loading from "../components/Loading.vue";
 import TripServices from "../services/TripServices.js";
 import { ref } from "vue";
+import { getImageUrl } from "../common/";
 
 const trips = ref([]);
 const isLoading = ref(true);
@@ -48,7 +49,7 @@ async function getTrips() {
         <div v-for="trip in trips" :key="trip.id" class="card col-md-12" style="height:200px;margin-bottom:20px;" v-else>
             <div class="row no-gutters">
                 <div class="col-sm-5 col-md-4">
-                    <img class="card-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVstmONEQm6CtW1ejlRTXOqEu2UkxR2OW1Zw&usqp=CAU" alt="">
+                    <img class="card-img" :src="getImageUrl(trip.imageUrl)" alt="">
                 </div>
                 <div class="col-sm-8">
                     <div class="card-body">
