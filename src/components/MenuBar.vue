@@ -48,6 +48,9 @@ function logout() {
       <a class="btn" href="./trips">
         Itenarary
       </a>
+      <a class="btn" href="./bookings" v-if="user != null">
+        Bookings
+      </a>
       <!-- <a class="btn" href="./places">
         Places
       </a> -->
