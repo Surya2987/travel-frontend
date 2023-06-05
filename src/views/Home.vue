@@ -69,7 +69,7 @@ const gethotelUrl = (id)=>{
     return "/hotel/"+id
 }
 const getTrips = () => {
-  return domainUrl+"travel-frontend/trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
+  return domainUrl+"trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
 }
 </script>
 <template>
