@@ -7,7 +7,7 @@ import SightSeeingServices from "../services/SightSeeingServices.js";
 
 import { ref } from "vue";
 import Loading from "../components/Loading.vue";
-import { getImageUrl } from "../common/";
+import { getImageUrl,domainUrl } from "../common/";
 
 
 const hotels = ref([]);
@@ -69,7 +69,7 @@ const gethotelUrl = (id)=>{
     return "/hotel/"+id
 }
 const getTrips = () => {
-  return "/trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
+  return domainUrl+"travel-frontend/trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
 }
 </script>
 <template>
