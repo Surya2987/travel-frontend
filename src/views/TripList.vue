@@ -7,7 +7,7 @@ import { ref } from "vue";
 import { getImageUrl,getTripUrl } from "../common/";
 
 const trips = ref([]);
-const response = ref([]);
+const temp_trips = ref([]);
 const isLoading = ref(true);
 const router = useRouter();
 const params = ref(router.currentRoute.value.query);
@@ -21,7 +21,7 @@ onMounted(async () => {
 async function getTrips() {
   await TripServices.getTrips(params.value)
     .then((response) => {
-      response.value = response.data;
+      temp_trips.value = response.data;
       trips.value = response.data;
     })
     .catch((error) => {
@@ -30,14 +30,14 @@ async function getTrips() {
 }
 
 async function filterTrips() {
-    const trips_new = response.value
-    const getTrips = trips_new.filter((trip) => {
+    const newTrips = temp_trips.value
+    const filteredPlaces = newTrips.filter((trip) => {
         return (
-        trip.title.toLowerCase().includes(search.toLowerCase()) ||
-        trip.description.toLowerCase().includes(search.toLowerCase())
+        trip.title.toLowerCase().includes(search.value.toLowerCase()) ||
+        trip.description.toLowerCase().includes(search.value.toLowerCase())
         );
     });
-    trips.value = getTrips;
+    trips.value = filteredPlaces;
 }
 
 </script>
@@ -75,7 +75,7 @@ async function filterTrips() {
                         <h5 class="card-title">{{ trip.title }}</h5>
                         <p class="card-text">{{ trip.description }}</p>
                         <div style="display:flex;">
-                            <a :href="getTripUrl(id)" style="margin-left: auto;">View More</a>
+                            <a :href="getTripUrl(trip.id)" style="margin-left: auto;">View More</a>
                         </div>
                     </div>
                 </div>

@@ -6,9 +6,9 @@ export const getImageUrl = (path) => {
 
 
 export const getTripUrl = (id) => {
-    return domainUrl+"/trip/"+id
+    return domainUrl+"trip/"+id
 }
 
 export const getEditTrip = (id) => {
-    return domainUrl+"/edit-itenarary/"+id
+    return domainUrl+"edit-itenarary/"+id
 }
