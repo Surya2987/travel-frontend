@@ -1,8 +1,10 @@
 import apiClient from "./services";
 
 export default {
-  getTrips() {
-    return apiClient.get("trips");
+  getTrips(params) {
+    return apiClient.get("trips", {
+      params: params,
+    });
   },
   getTrip(id) {
     return apiClient.get("trips/" + id);
@@ -28,5 +30,5 @@ export default {
   },
   getDayDetailsOfTrip(tripId,dayId) {
     return apiClient.delete("trips/"+tripId+"/days/"+dayId);
-  }
+  },
 };

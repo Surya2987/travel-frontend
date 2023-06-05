@@ -47,7 +47,17 @@ const router = createRouter({
       path: "/bookings",
       name: "bookings",
       component: () => import("./views/Bookings.vue"),
-    }
+    },
+    {
+      path: "/add-itenarary",
+      name: "add-itenarary",
+      component: () => import("./views/AddItenarary.vue"),
+    },
+    {
+      path: "/edit-itenarary/:id",
+      name: "edit-itenarary",
+      component: () => import("./views/EditItenarary.vue"),
+    },
   ],
 });
 

@@ -4,23 +4,40 @@ import { useRouter } from "vue-router";
 import Loading from "../components/Loading.vue";
 import TripServices from "../services/TripServices.js";
 import { ref } from "vue";
-import { getImageUrl } from "../common/";
+import { getImageUrl,getTripUrl } from "../common/";
 
 const trips = ref([]);
+const response = ref([]);
 const isLoading = ref(true);
+const router = useRouter();
+const params = ref(router.currentRoute.value.query);
+const search = ref("");
+
 onMounted(async () => {
   await getTrips();
   isLoading.value = false;
 });
 
 async function getTrips() {
-  await TripServices.getTrips()
+  await TripServices.getTrips(params.value)
     .then((response) => {
+      response.value = response.data;
       trips.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
+}
+
+async function filterTrips() {
+    const trips_new = response.value
+    const getTrips = trips_new.filter((trip) => {
+        return (
+        trip.title.toLowerCase().includes(search.toLowerCase()) ||
+        trip.description.toLowerCase().includes(search.toLowerCase())
+        );
+    });
+    trips.value = getTrips;
 }
 
 </script>
@@ -31,12 +48,14 @@ async function getTrips() {
         <div class="centered-container">
             <div class="col-md-6">
                 <div class="input-group rounded">
-                    <input type="search" class="form-control rounded" placeholder="Search Trip" aria-label="Search" aria-describedby="search-addon" />
-                    <span class="input-group-text border-0" id="search-addon">
+                    <input type="search" class="form-control rounded" placeholder="Search Trip" aria-label="Search" aria-describedby="search-addon" v-model="search"/>
+                    <span class="input-group-text border-0" id="search-addon" @click="filterTrips()" style="cursor:pointer">
                         <i class="fas fa-search"></i>
                     </span>
                 </div>
             </div>
+            <a href="./add-itenarary"><button type="button" class="btn btn-success button" >Add Itenarary</button></a>
+            <!-- <a href="./add-day"><button type="button" class="btn btn-success button" >Add Day</button></a> -->
         </div> <br/>
          <div style="display: flex; justify-content: center;">
             <h3>Itenarary</h3>
@@ -56,7 +75,7 @@ async function getTrips() {
                         <h5 class="card-title">{{ trip.title }}</h5>
                         <p class="card-text">{{ trip.description }}</p>
                         <div style="display:flex;">
-                            <a href="./trip" style="margin-left: auto;">View More</a>
+                            <a :href="getTripUrl(id)" style="margin-left: auto;">View More</a>
                         </div>
                     </div>
                 </div>
@@ -72,4 +91,7 @@ async function getTrips() {
     justify-content: center;
     align-items: center;
   }
+.button {
+  width:150px;height:50px;color:white;background-color:#555;margin-left: 20px;
+}
 </style>
