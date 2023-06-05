@@ -6,7 +6,6 @@ import { getImageUrl,getEditTrip } from "../common/";
 import Loading from "../components/Loading.vue";
 import TripServices from "../services/TripServices.js";
 import OrderServices from "../services/OrderServices.js";
-import Day from "../components/Day.vue";
 
 
 const router = useRouter();
@@ -84,7 +83,9 @@ async function bookTrip() {
             <div class="alldays">
                 <div v-for="(day,index) in trip.days" :key="index" class="days">
                     <div class="day">
-                    <Day :dayId="day.id"  />
+                      <h4>Day {{ day.dayNumber}}</h4>
+                        <p> {{ day.description }} </p>
+                        <a class="btn btn-success btn-sm" href="" > Show more </a>
                     </div>
                 </div>
             </div>
