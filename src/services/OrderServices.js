@@ -1,8 +1,8 @@
 import apiClient from "./services";
 
 export default {
-  getOrders() {
-    return apiClient.get("orders");
+  getOrders(id) {
+    return apiClient.get("orders/users/"+id);
   },
   addOrder(order) {
     return apiClient.post("orders", order);

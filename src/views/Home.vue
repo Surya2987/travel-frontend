@@ -11,7 +11,15 @@ import { getImageUrl } from "../common/";
 
 
 const hotels = ref([]);
+const events = ref([]);
+const sights = ref([]);
 const loader = ref(true);
+const tripSearch = ref({
+  starts: "",
+  ends: "",
+  origin: "",
+  destination: ""
+})
 
 onMounted(async () => {
   await getHotels();
@@ -60,6 +68,9 @@ const getsightUrl = (id)=>{
 const gethotelUrl = (id)=>{
     return "/hotel/"+id
 }
+const getTrips = () => {
+  return "/trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
+}
 </script>
 <template>
         <header class="header">
@@ -72,29 +83,29 @@ const gethotelUrl = (id)=>{
                               <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <input type="text" class="form-control" id="from" placeholder="Origin">
+                                    <input type="text" class="form-control" id="from" placeholder="Origin" v-model="tripSearch.origin">
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <input type="text" class="form-control" id="to" placeholder="Destination">
+                                    <input type="text" class="form-control" id="to" placeholder="Destination"  v-model="tripSearch.destination">
                                   </div>
                                 </div>
                               </div><br/>
                               <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <input type="date" class="form-control" id="departure">
+                                    <input type="date" class="form-control" id="departure"  v-model="tripSearch.starts">
                                   </div>
                                 </div>
                                 <div class="col-md-6">
                                   <div class="form-group">
-                                    <input type="date" class="form-control" id="return">
+                                    <input type="date" class="form-control" id="return"  v-model="tripSearch.ends">
                                   </div>
                                 </div>
                                 <div class="col-md-12">
                                   <div class="form-group">
-                                    <button type="submit" class="btn">Search</button>
+                                    <a type="submit" class="btn" :href="getTrips()">Search</a>
                                   </div>
                                 </div>
                               </div>
