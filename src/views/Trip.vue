@@ -81,7 +81,7 @@ async function bookTrip() {
                 </div>
             </div>
             <div class="alldays">
-                <div v-for="(day,index) in trip.days" :key="index" class="days">
+                <div v-for="(day,index) in trip.Days" :key="index" class="days">
                     <div class="day">
                       <h4>Day {{ day.dayNumber}}</h4>
                         <p> {{ day.description }} </p>
