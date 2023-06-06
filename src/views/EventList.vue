@@ -61,7 +61,7 @@ const getEventUrl = (id)=>{
                     </div>
                     <div class="card-body">
                         <h4 class="card-tile">{{ event.name }}</h4>
-                        <p> {{ event.description }}</p>
+                        <p> {{ event.description.slice(0,120) }}</p>
                         <a class="card-link" :href="getEventUrl(event.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -79,7 +79,7 @@ const getEventUrl = (id)=>{
 }
 .card-img {
     border-radius: 7px;
-    margin-top: 10px;
+    max-height: 350px;
 }
 .card-title {
     margin-top: 10px;

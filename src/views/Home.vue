@@ -123,7 +123,7 @@ const getTrips = () => {
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="hotel in hotels" :key="hotel.id">
+          <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="hotel in hotels.slice(0,3)" :key="hotel.id">
             <div class="card ">
             <div class="div-card-image">
                 <img class="card-img" :src="getImageUrl(hotel.imageUrl)" alt="">
@@ -131,7 +131,7 @@ const getTrips = () => {
             <div class="card-body">
                   <h3 class="card-price">{{ hotel.costPerRoom }} <sub>/ Per Night</sub></h3>
                 <h4 class="card-tile">{{ hotel.name }}</h4>
-                <p> {{ hotel.description }}</p>
+                <p> {{ hotel.description.slice(0,60) }}</p>
                 <a class="card-link" :href="gethotelUrl(hotel.id)">Show More <i class="ti-arrow-right"></i></a>
             </div>
             </div>
@@ -154,14 +154,14 @@ const getTrips = () => {
         </div>
 
         <div class="row">
-           <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="event in events" :key="event.id">
+           <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="event in events.slice(0,3)" :key="event.id">
                     <div class="card ">
                     <div class="div-card-image">
                         <img class="card-img" :src="getImageUrl(event.imageUrl)" alt="">
                     </div>
                     <div class="card-body">
                         <h4 class="card-tile">{{ event.name }}</h4>
-                        <p> {{ event.description }}</p>
+                        <p> {{ event.description.slice(0,60) }}</p>
                         <a class="card-link" :href="getEventUrl(event.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -183,14 +183,14 @@ const getTrips = () => {
         </div>
 
         <div class="row">
-            <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="sight in sights" :key="sight.id">
+            <div class="col-md-6 col-lg-4 mb-4 mb-md-0" v-for="sight in sights.slice(0,3)" :key="sight.id">
                     <div class="card ">
                     <div class="div-card-image">
                         <img class="card-img" :src="getImageUrl(sight.imageUrl)" alt="">
                     </div>
                     <div class="card-body">
                         <h4 class="card-tile">{{ sight.name }}</h4>
-                        <p> {{ sight.description }}</p>
+                        <p> {{ sight.description.slice(0,60) }}</p>
                         <a class="card-link" :href="getsightUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -236,5 +236,8 @@ a {
 
 .show-more {
   margin-right:60px;
+}
+.card-img {
+  max-height: 350px;
 }
 </style>
