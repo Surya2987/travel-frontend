@@ -61,7 +61,7 @@ const gethotelUrl = (id)=>{
                     </div>
                     <div class="card-body">
                         <h4 class="card-tile">{{ hotel.name }}</h4>
-                        <p> {{ hotel.description }}</p>
+                        <p> {{ hotel.description.slice(0,120) }}</p>
                         <a class="card-link" :href="gethotelUrl(hotel.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -79,7 +79,8 @@ const gethotelUrl = (id)=>{
 }
 .card-img {
     border-radius: 7px;
-    margin-top: 10px;
+    max-height: 350px;
+
 }
 .card-title {
     margin-top: 10px;

@@ -61,7 +61,7 @@ const getsightUrl = (id)=>{
                     </div>
                     <div class="card-body">
                         <h4 class="card-tile">{{ sight.name }}</h4>
-                        <p> {{ sight.description }}</p>
+                        <p> {{ sight.description.slice(0,120) }}</p>
                         <a class="card-link" :href="getsightUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -79,7 +79,7 @@ const getsightUrl = (id)=>{
 }
 .card-img {
     border-radius: 7px;
-    margin-top: 10px;
+    max-height: 350px;
 }
 .card-title {
     margin-top: 10px;
