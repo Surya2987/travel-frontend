@@ -6,6 +6,7 @@ import { getImageUrl,getEditTrip } from "../common/";
 import Loading from "../components/Loading.vue";
 import TripServices from "../services/TripServices.js";
 import OrderServices from "../services/OrderServices.js";
+import Day from "../components/Day.vue";
 
 
 const router = useRouter();
@@ -13,6 +14,11 @@ const tripId = router.currentRoute.value.params.id;
 const trip = ref({})
 const user = ref(null);
 const loader = ref(true);
+const snackbar = ref({
+  value: false,
+  color: "",
+  text: "",
+});
 
 onMounted(async () => {
   user.value = JSON.parse(localStorage.getItem("user"));
@@ -48,15 +54,26 @@ async function bookTrip() {
     loader.value = true;
     await OrderServices.addOrder({
         userId: user.value.id,
-        tripId: tripId
+        tripId: tripId,
+        totalCost: trip.value.costPerPerson
     })
     .then((response) => {
         loader.value = false;
+         snackbar.value.value = true;
+        snackbar.value.color = "green";
+        snackbar.value.text = "Order place successfully!";
     })
     .catch((error) => {
       console.log(error);
         loader.value = false;
+        snackbar.value.value = true;
+        snackbar.value.color = "error";
+        snackbar.value.text = error.response.data.message;
     });
+}
+
+function closeSnackBar() {
+  snackbar.value.value = false;
 }
 
 </script>
@@ -80,13 +97,11 @@ async function bookTrip() {
                     <button type="button" class="btn btn-success book-button" v-if="user != null" @click="bookTrip()" >Book Now</button>
                 </div>
             </div>
-            <div class="alldays">
-                <div v-for="(day,index) in trip.Days" :key="index" class="days">
-                    <div class="day">
-                      <h4>Day {{ day.dayNumber}}</h4>
-                        <p> {{ day.description }} </p>
-                        <a class="btn btn-success btn-sm" href="" > Show more </a>
-                    </div>
+            <div v-for="(day,index) in trip.Days" :key="index" class="days">
+                <div class="day">
+                    <h4>Day {{ day.dayNumber}}</h4>
+                    <p> {{ day.description }} </p>
+                    <a class="btn btn-success btn-sm" href="" > Show more </a>
                 </div>
             </div>
             <div class="edit-delete" v-if="user != null && user.role != 'customer'">
@@ -96,6 +111,19 @@ async function bookTrip() {
                 </a>
             </div>
       </div>
+       <v-snackbar v-model="snackbar.value" rounded="pill">
+        {{ snackbar.text }}
+
+        <template v-slot:actions>
+          <v-btn
+            :color="snackbar.color"
+            variant="text"
+            @click="closeSnackBar()"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
   </v-container>
 </template>
 
@@ -132,6 +160,7 @@ async function bookTrip() {
 }
 .day {
   margin-bottom: 30px;
+  width: 100%;
 }
 .underline {
     border-bottom: 2px solid black ;
@@ -148,8 +177,10 @@ async function bookTrip() {
     margin-top: 20px;
     margin-left: 20px;
 }
-.alldays {
-    display: flex;
-    justify-content: center;
+
+
+.day-wrapper {
+  display: flex;
+  justify-content: center;
 }
 </style>
