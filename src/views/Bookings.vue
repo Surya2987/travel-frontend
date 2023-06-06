@@ -20,6 +20,7 @@ async function getOrders() {
   await OrderServices.getOrders(user.value.id)
     .then((response) => {
       orders.value = response.data;
+      console.log("response",response.data)
     })
     .catch((error) => {
       console.log(error);
@@ -30,23 +31,31 @@ async function getOrders() {
 </script>
 
 <template>
-  <v-container>
-      <div class="container" style="margin-top:20px">
-         <div style="display: flex; justify-content: center;">
-            <h3>My Bookings</h3>
-        </div> <br/>
-            <Loading v-if="loader" />
-            <div class="col-md-12 container elevation-5 order" v-else>
-              <p> order id <strong> 12345 </strong></p>
-              <p> booked At <strong> 12345 </strong></p>
-              <p><a class="click" :href="getTripUrl(user.id)">Click here to get Itenarary info </a></p>
-            </div>
-             <div class="text-center" v-if="!loader && orders.length === 0">
-                <h4 class="text-muted">No Bookings available</h4>
-                <p class="text-muted">Please look into trips.</p>
-            </div>
-      </div><br/>
-  </v-container>
+<v-container>
+  <div class="container" style="margin-top: 20px">
+    <div style="display: flex; justify-content: center;">
+      <h3>My Bookings</h3>
+    </div>
+    <br/>
+    <Loading v-if="loader" />
+    <div class="col-md-12 container elevation-5 orders" v-else>
+      <div v-for="item in orders" :key="item.id" class="order-wrapper">
+        <div class="order">
+          <p> order id <strong> {{ item.id }} </strong></p>
+          <p> booked At <strong> {{ item.createdAt }} </strong></p>
+          <p><a class="click" :href="getTripUrl(item.itineraryId)">Click here to get Itinerary info</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center" v-if="!loader && orders.length === 0">
+      <h4 class="text-muted">No Bookings available</h4>
+      <p class="text-muted">Please look into trips.</p>
+      <hr/>
+    </div>
+  </div>
+  <br/>
+</v-container>
+
 </template>
 
 <style scoped>
@@ -73,11 +82,24 @@ a:hover {
     color: white;
     background-color: #FE7A15;
 }
-.order {
-  padding: 20px;
+.orders {
+  padding: 30px;
 }
 
 .click {
   color: blue;
+}
+
+.order-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.order {
+  margin-top: 30px;
+  width:70%;
+  border: 2px solid black;
+  padding:15px;
+  margin-left: 20px;
 }
 </style>
