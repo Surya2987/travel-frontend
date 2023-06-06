@@ -94,4 +94,9 @@ async function filterTrips() {
 .button {
   width:150px;height:50px;color:white;background-color:#555;margin-left: 20px;
 }
+
+.card-img {
+  max-height: 200px;
+}
+
 </style>
