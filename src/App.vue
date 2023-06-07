@@ -25,4 +25,8 @@ import 'bootstrap/dist/js/bootstrap.js'
   body {
         font-family: 'Montserrat', sans-serif;
   }
+    .underline {
+    border-bottom: 2px solid black ;
+    margin-bottom: 15px;
+}
 </style>

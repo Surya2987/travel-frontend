@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import EventServices from "../services/EventServices.js";
 import { ref } from "vue";
 import Loading from "../components/Loading.vue";
-import { getImageUrl } from "../common/";
+import { getImageUrl,domainUrl,getEventUrl } from "../common/";
 
 
 const events = ref([]);
@@ -25,9 +25,6 @@ async function getEvents() {
     });
 }
 
-const getEventUrl = (id)=>{
-    return "/event/"+id
-}
 
 
 </script>
@@ -60,8 +57,10 @@ const getEventUrl = (id)=>{
                         <img class="card-img" :src="getImageUrl(event.imageUrl)" alt="">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-tile">{{ event.name }}</h4>
-                        <p> {{ event.description.slice(0,120) }}</p>
+                        <div class="card-tile">
+                            <h4>{{ event.name }}</h4>
+                            <p> {{ event.description.slice(0,40) }}..</p>
+                        </div>
                         <a class="card-link" :href="getEventUrl(event.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -79,7 +78,7 @@ const getEventUrl = (id)=>{
 }
 .card-img {
     border-radius: 7px;
-    max-height: 350px;
+    max-height: 300px;
 }
 .card-title {
     margin-top: 10px;
