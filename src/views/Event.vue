@@ -30,7 +30,6 @@ async function getEvent() {
   <v-container>
        <Loading v-if="loader" />
       <div class="container col-md-12" v-else>
-            <h2>{{event.name}}</h2>
             <div class="row">
                 <div class="col-md-5">
                     <img :src="getImageUrl(event.imageUrl)" class="image"/>
