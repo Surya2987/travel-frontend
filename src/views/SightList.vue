@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import SightSeeingServices from "../services/SightSeeingServices.js";
 import { ref } from "vue";
 import Loading from "../components/Loading.vue";
-import { getImageUrl } from "../common/";
+import { getImageUrl.getsightUrl } from "../common/";
 
 
 const sights = ref([]);
