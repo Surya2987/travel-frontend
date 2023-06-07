@@ -25,10 +25,6 @@ async function getSights() {
     });
 }
 
-const getsightUrl = (id)=>{
-    return "/sight/"+id
-}
-
 
 </script>
 
