@@ -7,7 +7,7 @@ import SightSeeingServices from "../services/SightSeeingServices.js";
 
 import { ref } from "vue";
 import Loading from "../components/Loading.vue";
-import { getImageUrl,domainUrl } from "../common/";
+import { getImageUrl,domainUrl,getEventsUrl,getHotelsUrl,getSightsUrl,getsightUrl,getEventUrl,gethotelUrl } from "../common/";
 
 
 const hotels = ref([]);
@@ -57,17 +57,6 @@ async function getEvents() {
     });
 }
 
-const getEventUrl = (id)=>{
-    return "/event/"+id
-}
-
-const getsightUrl = (id)=>{
-    return "/sight/"+id
-}
-
-const gethotelUrl = (id)=>{
-    return "/hotel/"+id
-}
 const getTrips = () => {
   return domainUrl+"trips?starts="+tripSearch.value.starts+"&ends="+tripSearch.value.ends+"&origin="+tripSearch.value.origin+"&destination="+tripSearch.value.destination
 }
@@ -130,8 +119,10 @@ const getTrips = () => {
             </div>
             <div class="card-body">
                   <h3 class="card-price">{{ hotel.costPerRoom }} <sub>/ Per Night</sub></h3>
-                <h4 class="card-tile">{{ hotel.name }}</h4>
-                <p> {{ hotel.description.slice(0,60) }}</p>
+                <div class="card-tile">
+                  <h4>{{ hotel.name }}</h4>
+                  <p> {{ hotel.description.slice(0,60) }}</p>
+                  </div>
                 <a class="card-link" :href="gethotelUrl(hotel.id)">Show More <i class="ti-arrow-right"></i></a>
             </div>
             </div>
@@ -142,7 +133,7 @@ const getTrips = () => {
 
     <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="./hotels"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a :href="getHotelsUrl()"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 
@@ -160,8 +151,10 @@ const getTrips = () => {
                         <img class="card-img" :src="getImageUrl(event.imageUrl)" alt="">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-tile">{{ event.name }}</h4>
-                        <p> {{ event.description.slice(0,60) }}</p>
+                        <div class="card-tile">
+                          <h4>{{ event.name }}</h4>
+                          <p> {{ event.description.slice(0,50) }}..</p>
+                        </div>
                         <a class="card-link" :href="getEventUrl(event.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -172,7 +165,7 @@ const getTrips = () => {
 
      <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="./events"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a :href="getEventsUrl()"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 
@@ -189,8 +182,10 @@ const getTrips = () => {
                         <img class="card-img" :src="getImageUrl(sight.imageUrl)" alt="">
                     </div>
                     <div class="card-body">
-                        <h4 class="card-tile">{{ sight.name }}</h4>
-                        <p> {{ sight.description.slice(0,60) }}</p>
+                        <div class="card-tile">
+                         <h4> {{ sight.name }}</h4>
+                         {{ sight.description.slice(0,60) }}
+                          </div>
                         <a class="card-link" :href="getsightUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
@@ -200,7 +195,7 @@ const getTrips = () => {
     </section><br/><br/>
     <div class="row justify-content-center">
         <div class="col-md-2 show-more">
-         <a href="./sightseeing"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
+         <a :href="getSightsUrl()"><button type="button" class="btn btn-warning show-more-button" >Show More</button></a>
         </div>
     </div><br/><br/>
 </template>
