@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import SightSeeingServices from "../services/SightSeeingServices.js";
+import HotelServices from "../services/HotelServices.js";
 import { ref } from "vue";
 import Loading from "../components/Loading.vue";
-import { getImageUrl,getsightUrl } from "../common/";
+import { getImageUrl,gethotelUrl } from "../common/";
 
 
 const sights = ref([]);
@@ -16,7 +16,7 @@ onMounted(async () => {
 });
 
 async function getSights() {
-  await SightSeeingServices.getSights()
+  await HotelServices.getHotels()
     .then((response) => {
       sights.value = response.data;
     })
@@ -58,7 +58,7 @@ async function getSights() {
                     <div class="card-body">
                         <h4 class="card-tile">{{ sight.name }}</h4>
                         <p> {{ sight.description.slice(0,120) }}</p>
-                        <a class="card-link" :href="getsightUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
+                        <a class="card-link" :href="gethotelUrl(sight.id)">Show More <i class="ti-arrow-right"></i></a>
                     </div>
                     </div>
                 </div>
