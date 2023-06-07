@@ -30,7 +30,6 @@ async function getSight() {
   <v-container>
        <Loading v-if="loader" />
       <div class="container col-md-12" v-else>
-            <h2>{{sight.name}}</h2>
             <div class="row">
                 <div class="col-md-5">
                     <img :src="getImageUrl(sight.imageUrl)" class="image"/>
