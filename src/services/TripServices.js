@@ -29,6 +29,6 @@ export default {
     return apiClient.delete("trips/special/"+tripId+"/plan");
   },
   getDayDetailsOfTrip(tripId,dayId) {
-    return apiClient.delete("trips/"+tripId+"/days/"+dayId);
+    return apiClient.get("trips/"+tripId+"/days/"+dayId);
   },
 };
