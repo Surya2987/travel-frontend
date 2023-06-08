@@ -42,7 +42,7 @@ async function getSights() {
             </div>
         </div> <br/>
          <div style="display: flex; justify-content: center;">
-            <h3>Places</h3>
+            <h3>Hotels</h3>
         </div> <br/>
             <Loading v-if="loader" />
              <div class="text-center" v-if="!loader && sights.length == 0">

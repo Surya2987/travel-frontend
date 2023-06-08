@@ -98,11 +98,7 @@ function closeSnackBar() {
                 </div>
             </div>
             <div v-for="(day,index) in trip.Days" :key="index" class="days">
-                <div class="day">
-                    <h4>Day {{ day.dayNumber}}</h4>
-                    <p> {{ day.description }} </p>
-                    <a class="btn btn-success btn-sm" href="" > Show more </a>
-                </div>
+                <Day :day="day" />
             </div>
             <div class="edit-delete" v-if="user != null && user.role != 'customer'">
                 <a type="button" class="btn btn-warning button" :href="getEditTrip(tripId)">Edit</a>
@@ -139,6 +135,7 @@ function closeSnackBar() {
 }
 .large-image {
     width:100%;max-height:500px;
+    border-radius: 5px;
 }
 .day-title {
     display:flex;
