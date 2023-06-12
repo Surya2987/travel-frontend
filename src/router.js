@@ -68,6 +68,11 @@ const router = createRouter({
       name: "edit-itenarary",
       component: () => import("./views/EditItenarary.vue"),
     },
+    {
+      path: "/add-day",
+      name: "add-day",
+      component: () => import("./views/AddDay.vue"),
+    },
   ],
 });
 

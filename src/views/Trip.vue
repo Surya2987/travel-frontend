@@ -94,13 +94,13 @@ function closeSnackBar() {
                     <p>Begin on <strong>{{ trip.start_date }}</strong></p>
                     <p>Ends date on <strong>{{ trip.end_date }} </strong></p>
                     <p>Total cost is <strong>${{ trip.costPerPerson }} / person </strong></p>
-                    <button type="button" class="btn btn-success book-button" v-if="user != null" @click="bookTrip()" >Book Now</button>
+                    <button type="button" class="btn btn-success book-button" v-if="user!= null && user.isAdmin == 0" @click="bookTrip()" >Book Now</button>
                 </div>
             </div>
             <div v-for="(day,index) in trip.Days" :key="index" class="days">
                 <Day :day="day" />
             </div>
-            <div class="edit-delete" v-if="user != null && user.role != 'customer'">
+            <div class="edit-delete" v-if="user!= null && user.isAdmin != 0">
                 <a type="button" class="btn btn-warning button" :href="getEditTrip(tripId)">Edit</a>
                 <a type="button" class="btn btn-primary button" @click="deleteTrip()">
                     Delete

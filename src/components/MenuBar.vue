@@ -42,16 +42,16 @@ function logout() {
         ></v-img>
       </router-link>
       <v-toolbar-title class="title" :style="{color:'white',cursor:'pointer'}" >
-        <a href="./">{{ title }}</a>
+        <a href="/travel-frontend">{{ title }}</a>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <a class="btn" href="./trips">
+      <a class="btn" href="/travel-frontend/trips">
         Itenarary
       </a>
-      <a class="btn" href="./bookings" v-if="user != null">
+      <a class="btn" href="/travel-frontend/bookings" v-if="user != null">
         Bookings
       </a>
-      <!-- <a class="btn" href="./places">
+      <!-- <a class="btn" href="/travel-frontend/places">
         Places
       </a> -->
       <v-btn v-if="user === null" class="mx-2" :to="{ name: 'login' }">
