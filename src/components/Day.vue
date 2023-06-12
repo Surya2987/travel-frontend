@@ -1,96 +1,89 @@
 <script setup>
-import ocLogo from "/oc_logo.png";
-import { ref, onMounted } from "vue";
+import { onMounted, defineProps } from "vue";
 import { useRouter } from "vue-router";
-import UserServices from "../services/UserServices";
+import { ref } from "vue";
+import Loading from "../components/Loading.vue";
+import TripServices from "../services/TripServices.js";
+import { getImageUrl,getEventUrl,gethotelUrl,getsightUrl } from "../common";
+
 
 const router = useRouter();
+const tripId = router.currentRoute.value.params.id;
+const loader = ref(true);
+const day= props.day;
+const dayInDetail = ref({})
 
-const user = ref(null);
-const title = ref("Travel Itenarary");
-const logoURL = ref("");
-
-onMounted(() => {
-  logoURL.value = ocLogo;
-  user.value = JSON.parse(localStorage.getItem("user"));
+const props = defineProps({
+  day: Number,
+});
+onMounted(async () => {
+  await getDayDetails();
+  loader.value = false;
 });
 
-function logout() {
-  UserServices.logoutUser()
-    .then((data) => {
-      console.log(data);
+async function getDayDetails() {
+  await TripServices.getDayDetailsOfTrip(tripId,day.id)
+    .then((response) => {
+      dayInDetail.value = response.data;
     })
     .catch((error) => {
       console.log(error);
     });
-  localStorage.removeItem("user");
-  user.value = null;
-  router.push({ name: "login" });
 }
+
+
 </script>
 
 <template>
-  <div>
-    <v-app-bar color='#555' app dark>
-      <router-link :to="{ name: 'home' }">
-        <v-img
-          class="mx-2"
-          :src="logoURL"
-          height="50"
-          width="50"
-          contain
-        ></v-img>
-      </router-link>
-      <v-toolbar-title class="title" :style="{color:'white',cursor:'pointer'}" >
-        <a href="./">{{ title }}</a>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <a class="btn" href="./trips">
-        Itenarary
-      </a>
-      <a class="btn" href="./bookings" v-if="user!= null && user.isAdmin == 0">
-        Bookings
-      </a>
-      <v-btn v-if="user === null" class="mx-2" :to="{ name: 'login' }">
-        Login
-      </v-btn>
-      <v-menu v-if="user !== null" min-width="200px" rounded>
-        <template v-slot:activator="{ props }">
-          <v-btn icon v-bind="props">
-            <v-avatar class="mx-auto text-center" color="primary" size="large">
-              <span class="white--text font-weight-bold">{{
-                `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`
-              }}</span>
-            </v-avatar>
-          </v-btn>
-        </template>
-        <v-card>
-          <v-card-text>
-            <div class="mx-auto text-center">
-              <v-avatar color="primary">
-                <span class="white--text text-h5">{{
-                  `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`
-                }}</span>
-              </v-avatar>
-              <h3>{{ `${user.firstName} ${user.lastName}` }}</h3>
-              <p class="text-caption mt-1">
-                {{ user.email }}
-              </p>
-              <v-divider class="my-3"></v-divider>
-              <v-btn rounded variant="text" @click="logout()"> Logout </v-btn>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-menu>
-    </v-app-bar>
-  </div>
+  <v-container>
+        <h3>Day {{ day.dayNumber}}</h3>
+        <p> {{ day.description }} </p>
+
+        <h5 v-if="dayInDetail.Events?.length != 0" class="title"> Events </h5>
+        <div v-for="event in dayInDetail.Events" :key="event.id" class="item">
+          <img :src="getImageUrl(event.imageUrl)"  class="image" width="100" height="100"/>
+          <div class="details">
+          <h5> {{ event.name }} </h5>
+          <a class="btn btn-success btn-sm" :href="getEventUrl(event.id)" > Show more </a>
+          </div>
+        </div>
+        <h5 v-if="dayInDetail.Sightseeings?.length != 0" class="title" > SightSeeing </h5>
+        <div v-for="sight in dayInDetail.Sightseeings" :key="sight.id" class="item">
+          <img :src="getImageUrl(sight.imageUrl)" class="image" width="100" height="100"/>
+          <div class="details">
+          <h5> {{ sight.name }} </h5>
+          <a class="btn btn-success btn-sm" :href="getsightUrl(sight.id)" > Show more </a>
+          </div>
+        </div>
+          <h5 v-if="dayInDetail.HotelStays?.length != 0" class="title" > Hotels </h5>
+        <div v-for="stay in dayInDetail.HotelStays" :key="stay.id" class="item">
+          <img :src="getImageUrl(stay.imageUrl)" class="image" width="100" height="100"/>
+          <div class="details">
+          <h5> {{ stay.name }} </h5>
+          <p> $ {{ stay.costPerRoom }} / cost per room </p>
+          <a class="btn btn-success btn-sm" :href="gethotelUrl(stay.id)" > Show more </a>
+          </div>
+        </div>
+  </v-container>
 </template>
 
 <style scoped>
- a {
-  color: white;
- }
- a:hover {
-  color: white;
- }
+
+.container {
+    background: white;
+    padding-bottom: 30px;
+}
+.item {
+  display: flex;
+  margin-top: 10px;
+}
+.details {
+  margin-left: 20px;
+}
+.image {
+  border-radius: 5px;
+}
+.title {
+  margin-top: 10px;
+}
 </style>
