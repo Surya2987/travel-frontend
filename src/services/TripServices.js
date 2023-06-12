@@ -31,4 +31,7 @@ export default {
   getDayDetailsOfTrip(tripId,dayId) {
     return apiClient.get("trips/"+tripId+"/days/"+dayId);
   },
+  addDay(day) {
+    return apiClient.post("trips/addDay", day);
+  },
 };

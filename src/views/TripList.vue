@@ -12,8 +12,10 @@ const isLoading = ref(true);
 const router = useRouter();
 const params = ref(router.currentRoute.value.query);
 const search = ref("");
+const user = ref(null);
 
 onMounted(async () => {
+  user.value = JSON.parse(localStorage.getItem("user"));
   await getTrips();
   isLoading.value = false;
 });
@@ -54,8 +56,8 @@ async function filterTrips() {
                     </span>
                 </div>
             </div>
-            <a href="./add-itenarary"><button type="button" class="btn btn-success button" >Add Itenarary</button></a>
-            <!-- <a href="./add-day"><button type="button" class="btn btn-success button" >Add Day</button></a> -->
+            <a href="/travel-frontend/add-itenarary"><button type="button" class="btn btn-success button" v-if="user!= null && user.isAdmin != 0" >Add Itenarary</button></a>
+            <a href="/travel-frontend/add-day"><button type="button" class="btn btn-success button" v-if="user!= null && user.isAdmin != 0" >Add Day</button></a>
         </div> <br/>
          <div style="display: flex; justify-content: center;">
             <h3>Itenarary</h3>
