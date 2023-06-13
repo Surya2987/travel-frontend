@@ -7,4 +7,7 @@ export default {
   addOrder(order) {
     return apiClient.post("orders", order);
   },
+  deleteOrder(id) {
+    return apiClient.delete("orders/"+id);
+  }
 };
